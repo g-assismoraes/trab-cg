@@ -30,8 +30,8 @@ export default class Mesh {
     this.uProjectionLoc = -1;
   }
 
-  async loadMeshV4() {
-    const resp = await fetch('bunny.obj');
+  async loadMeshV4(filename='model.obj') {
+    const resp = await fetch(filename);
     const text = await resp.text();
 
     const txtList = text.split(/\s+/)

@@ -168,75 +168,77 @@ export class HalfEdgeDS {
   estrela(vId) {
     
     //pediu para voltar tudo a cor normal
-    console.log(vId)
-    if (vId == -1){
-      if (this.pastVertexEstrela != null){
-        let v = this.vertices[this.pastVertexEstrela];
-        let faces = [];
-        let hinit = v.he;
-        let he = v.he;
-    
-        while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
-          faces.push(he.face);
-          he = he.next.next.opposite;
-        }
-        faces.push(he.face);
-        
-        for (let i = 0; i < faces.length; i++){
-          let bh = faces[i].baseHe
-          bh.vertex.color = [0.0, 1.0, 1.0, 1.0];
-          bh.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
-          bh.next.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
-        }
-      }
-      this.pastVertexEstrela = null
-      return 1;
-    }
-
-    else{
-      //retorna o vertex anterior a cor normal antes de mudar o proximo
-      if (this.pastVertexEstrela != null){
-        let v = this.vertices[this.pastVertexEstrela];
-        let faces = [];
-        let hinit = v.he;
-        let he = v.he;
-    
-        while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
-          faces.push(he.face);
-          he = he.next.next.opposite;
-        }
-        faces.push(he.face);
-        
-        for (let i = 0; i < faces.length; i++){
-          let bh = faces[i].baseHe
-          bh.vertex.color = [0.0, 1.0, 1.0, 1.0];
-          bh.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
-          bh.next.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
-        }
-      }
-
-      //muda efetivamente a cor do vertex solicitado da vez
-      let v = this.vertices[vId];
-      let faces = [];
-      let hinit = v.he;
-      let he = v.he;
-
-      while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
-        faces.push(he.face);
-        he = he.next.next.opposite;
-      }
-      faces.push(he.face);
+    if (vId < this.faces.length){
+      if (vId == -1){
+        if (this.pastVertexEstrela != null){
+          let v = this.vertices[this.pastVertexEstrela];
+          let faces = [];
+          let hinit = v.he;
+          let he = v.he;
       
-      for (let i = 0; i < faces.length; i++){
-        let bh = faces[i].baseHe
-        bh.vertex.color = [1.0, 0.0, 0.0, 1.0]
-        bh.next.vertex.color = [1.0, 0.0, 0.0, 1.0]
-        bh.next.next.vertex.color = [1.0, 0.0, 0.0, 1.0]
+          while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
+            faces.push(he.face);
+            he = he.next.next.opposite;
+          }
+          faces.push(he.face);
+          
+          for (let i = 0; i < faces.length; i++){
+            let bh = faces[i].baseHe
+            bh.vertex.color = [0.0, 1.0, 1.0, 1.0];
+            bh.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+            bh.next.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+          }
+        }
+        this.pastVertexEstrela = null
+        return 1;
       }
 
-      this.pastVertexEstrela = vId;
+      else{
+        //retorna o vertex anterior a cor normal antes de mudar o proximo
+        if (this.pastVertexEstrela != null){
+          let v = this.vertices[this.pastVertexEstrela];
+          let faces = [];
+          let hinit = v.he;
+          let he = v.he;
+      
+          while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
+            faces.push(he.face);
+            he = he.next.next.opposite;
+          }
+          faces.push(he.face);
+          
+          for (let i = 0; i < faces.length; i++){
+            let bh = faces[i].baseHe
+            bh.vertex.color = [0.0, 1.0, 1.0, 1.0];
+            bh.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+            bh.next.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+          }
+        }
 
-      return faces.length;
-  }
+        //muda efetivamente a cor do vertex solicitado da vez
+        let v = this.vertices[vId];
+        let faces = [];
+        let hinit = v.he;
+        let he = v.he;
+
+        while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
+          faces.push(he.face);
+          he = he.next.next.opposite;
+        }
+        faces.push(he.face);
+        
+        for (let i = 0; i < faces.length; i++){
+          let bh = faces[i].baseHe
+          bh.vertex.color = [1.0, 0.0, 0.0, 1.0]
+          bh.next.vertex.color = [1.0, 0.0, 0.0, 1.0]
+          bh.next.next.vertex.color = [1.0, 0.0, 0.0, 1.0]
+        }
+
+        this.pastVertexEstrela = vId;
+
+        return faces.length;
+    }
+    }
+    return 0
   }
 }

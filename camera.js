@@ -1,7 +1,7 @@
 export default class Camera {
   constructor(gl) {
     this.x = 2.0
-    this.y = 15.0
+    this.y = 10.0
     // this.y = 1.0
     this.z = 2.0
 
