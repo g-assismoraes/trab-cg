@@ -42,9 +42,8 @@ class Scene {
     this.light2.updateLight();
 
     if (Scene.vertexSelected != -2) {
-      if (Scene.meshSelected == 1)
-        this.mesh.callEstrela(Scene.vertexSelected);
-      else this.copy.callEstrela(Scene.vertexSelected)
+      if (Scene.meshSelected == 1) this.mesh.callEstrela(Scene.vertexSelected);
+      else this.copy.callEstrela(Scene.vertexSelected);
       Scene.vertexSelected = -2;
     }
 
