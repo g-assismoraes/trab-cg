@@ -56,8 +56,8 @@ export default class Camera {
   }
 
   updateCam() {
-    this.t += 0.01
-    this.x = 25*Math.sin(this.t)
+    this.t += 0.02
+    this.x = 35*Math.sin(this.t)
     this.z = 25*Math.cos(this.t)
     // this.x = 1.7*Math.sin(this.t)
     // this.z = 1.7*Math.cos(this.t)

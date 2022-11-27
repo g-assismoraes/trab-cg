@@ -78,5 +78,5 @@ void main()
   float fatorEsp2 = pow(max(0.0, dot(halfVec2, viewNormal)), light_esp_p2);
 
   // cor final do vértice
-  minhaColor = 0.75 * fColor + 0.25 * (1.0*(light_amb_k1 * light_amb_c1 + fatorDif1 * light_dif_k1 * light_dif_c1 + fatorEsp1 * light_esp_k1 * light_esp_c1) + 1.0*(light_amb_k2 * light_amb_c2 + fatorDif2 * light_dif_k2 * light_dif_c2 + fatorEsp2 * light_esp_k2 * light_esp_c2));
+  minhaColor = 0.35 * fColor + 0.65 * (1.0*(light_amb_k1 * light_amb_c1 + fatorDif1 * light_dif_k1 * light_dif_c1 + fatorEsp1 * light_esp_k1 * light_esp_c1) + 1.0*(light_amb_k2 * light_amb_c2 + fatorDif2 * light_dif_k2 * light_dif_c2 + fatorEsp2 * light_esp_k2 * light_esp_c2));
 }`

@@ -1,5 +1,6 @@
 export class Vertex {
-  constructor(vid, x, y, z, color = [0.5, 0.2, 0.4, 1.0]) {
+  constructor(vid, x, y, z, color = [0.0, 1.0, 1.0, 1.0]) {
+    //[0.5, 0.2, 0.4, 1.0]
     this.vid = vid;
 
     this.position = [x, y, z, 1];
@@ -33,6 +34,7 @@ export class HalfEdgeDS {
     this.vertices = [];
     this.halfEdges = [];
     this.faces = [];
+    this.pastVertexEstrela = null //controle do ultimo vertex utilizado pela estrela
   }
 
   build(coords, trigs) {
@@ -164,6 +166,55 @@ export class HalfEdgeDS {
   }
 
   estrela(vId) {
+    
+    //pediu para voltar tudo a cor normal
+    if (vId == -1){
+      console.log(this.pastVertexEstrela)
+      if (this.pastVertexEstrela){
+        let v = this.vertices[this.pastVertexEstrela];
+        let faces = [];
+        let hinit = v.he;
+        let he = v.he;
+    
+        while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
+          faces.push(he.face);
+          he = he.next.next.opposite;
+        }
+        faces.push(he.face);
+        
+        for (let i = 0; i < faces.length; i++){
+          let bh = faces[i].baseHe
+          bh.vertex.color = [0.0, 1.0, 1.0, 1.0];
+          bh.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+          bh.next.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+        }
+      }
+      return 1;
+    }
+
+    else{
+    //retorna o vertex anterior a cor normal antes de mudar o proximo
+    if (this.pastVertexEstrela){
+      let v = this.vertices[this.pastVertexEstrela];
+      let faces = [];
+      let hinit = v.he;
+      let he = v.he;
+  
+      while ((he.next.next.opposite != null) && (he.next.next.opposite != hinit )) {
+        faces.push(he.face);
+        he = he.next.next.opposite;
+      }
+      faces.push(he.face);
+      
+      for (let i = 0; i < faces.length; i++){
+        let bh = faces[i].baseHe
+        bh.vertex.color = [0.0, 1.0, 1.0, 1.0];
+        bh.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+        bh.next.next.vertex.color = [0.0, 1.0, 1.0, 1.0];
+      }
+    }
+
+    //muda efetivamente a cor do vertex solicitado da vez
     let v = this.vertices[vId];
     let faces = [];
     let hinit = v.he;
@@ -177,11 +228,14 @@ export class HalfEdgeDS {
     
     for (let i = 0; i < faces.length; i++){
       let bh = faces[i].baseHe
-      bh.vertex.color = [0.0, 0.0, 1.0, 1.0]
-      bh.next.vertex.color = [0.0, 0.0, 1.0, 1.0]
-      bh.next.next.vertex.color = [0.0, 0.0, 1.0, 1.0]
+      bh.vertex.color = [1.0, 0.0, 0.0, 1.0]
+      bh.next.vertex.color = [1.0, 0.0, 0.0, 1.0]
+      bh.next.next.vertex.color = [1.0, 0.0, 0.0, 1.0]
     }
 
-    //return faces;
+    this.pastVertexEstrela = vId;
+
+    return faces.length;
+  }
   }
 }

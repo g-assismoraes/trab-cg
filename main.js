@@ -17,6 +17,15 @@ class Scene {
 
     // this.mesh = new Mesh(1.0, gl);
     // this.copy = new Mesh(-1.0, gl);
+
+    Scene.vertexSelected = -2;
+    Scene.meshSelected = 1;
+    
+  }
+
+  static updateVertexSelection(vid, m){
+    Scene.vertexSelected = vid
+    Scene.meshSelected = m
   }
 
   async init(gl) {
@@ -31,6 +40,13 @@ class Scene {
     this.cam.updateCam();
     this.light.updateLight();
     this.light2.updateLight();
+
+    if (Scene.vertexSelected != -2) {
+      if (Scene.meshSelected == 1)
+        this.mesh.callEstrela(Scene.vertexSelected);
+      else this.copy.callEstrela(Scene.vertexSelected)
+      Scene.vertexSelected = -2;
+    }
 
     this.mesh.draw(gl, this.cam, this.light, this.light2);
     this.copy.draw(gl, this.cam, this.light, this.light2);
@@ -52,7 +68,7 @@ class Main {
 
   setViewport() {
     var devicePixelRatio = window.devicePixelRatio || 1;
-    this.gl.canvas.width = 1024 * devicePixelRatio;
+    this.gl.canvas.width = 1280 * devicePixelRatio;
     this.gl.canvas.height = 768 * devicePixelRatio;
 
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
@@ -71,8 +87,28 @@ class Main {
 window.onkeypress = function (e) {
   e = e || window.event;
   if (e.keyCode == 112 || e.keyCode == 80) {
-    Camera.updateProjectionType()
-  }}
+    Camera.updateProjectionType();
+  }
+
+  if (e.keyCode == 73 || e.keyCode == 105){ //tecla i/I para estrela da malha 1
+    let resp = prompt("Insira o ID de um vertex da malha 1:", "-1");
+    let text;
+    if (resp == null || resp == "") {
+      text = 'error'
+    } else {
+      Scene.updateVertexSelection(parseInt(resp), 1)
+    }
+  }
+  if (e.keyCode == 79 || e.keyCode == 111){ //tecla o/O para estrela da malha 2
+    let resp = prompt("Insira o ID de um vertex da malha 2:", "-1");
+    let text;
+    if (resp == null || resp == "") {
+      text = 'error'
+    } else {
+      Scene.updateVertexSelection(parseInt(resp), 2)
+    }
+  }
+}
 
 window.onload = () => {
   const app = new Main();

@@ -119,12 +119,13 @@ export default class Mesh {
     // [5 0 0 0, 0 5 0 0, 0 0 5 0, 0 0 0 1] * this.mat 
   }
 
+  callEstrela(vId){
+    let flag = this.heds.estrela(vId)
+    if (flag != 0) this.createVAO(this.gl)
+  }
+
+
   draw(gl, cam, light) {
-    this.heds.estrela(1)
-
-
-    //this.createVAO(this.gl)
-
     // faces orientadas no sentido anti-horário
     gl.frontFace(gl.CCW);
 
