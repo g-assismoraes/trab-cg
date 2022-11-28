@@ -8,8 +8,8 @@ class Scene {
     this.cam = new Camera(gl);
 
     // Luz
-    this.light2 = new Light(40.0, 40.0, 40.0);
-    this.light = new Light(40.0, 40.0, -40.0);
+    this.light = new Light(2.0, 2.0, 2.0);
+    this.light2 = new Light(-2.0, 2.0, -2.0);
 
     // Mesh
     this.mesh = new Mesh(3.0, gl);
@@ -32,7 +32,7 @@ class Scene {
     await this.mesh.loadMeshV4('model.obj');
     this.mesh.init(gl, this.light, this.light2);
 
-    await this.copy.loadMeshV4('bunny5.obj')
+    await this.copy.loadMeshV4('bunny2.obj')
     this.copy.init(gl, this.light, this.light2);
   }
 
