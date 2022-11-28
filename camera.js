@@ -1,17 +1,10 @@
 export default class Camera {
   constructor(gl) {
-    this.x = 1.0
-    this.y = 1.0
-    // this.y = 1.0
-    this.z = 1.0
-
-    this.r_factor = 0.0
-
     // Posição da camera
     this.eye = vec3.fromValues(1, 2.5, 1.0);
-
     this.at  = vec3.fromValues(0.0, 0.0, 0.0);
     this.up  = vec3.fromValues(0.0, 1.0, 0.0);
+    this.r_factor = 0.0;
 
     // Parâmetros da projeção
     this.fovy = Math.PI / 2;
@@ -56,7 +49,7 @@ export default class Camera {
   }
 
   updateCam() {
-    this.r_factor += 0.0
+    this.r_factor += 0.02
     // this.x = 35*Math.sin(this.t)
     // this.z = 25*Math.cos(this.t)
     this.eye = vec3.fromValues(8*Math.sin(this.r_factor), 2.5, 8*Math.cos(this.r_factor));

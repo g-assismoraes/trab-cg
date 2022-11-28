@@ -67,7 +67,7 @@ class Main {
 
   setViewport() {
     var devicePixelRatio = window.devicePixelRatio || 1;
-    this.gl.canvas.width = 1280 * devicePixelRatio;
+    this.gl.canvas.width = 1024 * devicePixelRatio;
     this.gl.canvas.height = 768 * devicePixelRatio;
 
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
