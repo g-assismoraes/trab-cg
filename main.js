@@ -8,12 +8,12 @@ class Scene {
     this.cam = new Camera(gl);
 
     // Luz
-    this.light2 = new Light(40.0, 10.0, 40.0);
-    this.light = new Light(-40.0, 10.0, -40.0);
+    this.light2 = new Light(40.0, 40.0, 40.0);
+    this.light = new Light(40.0, 40.0, -40.0);
 
     // Mesh
-    this.mesh = new Mesh(15.0, gl);
-    this.copy = new Mesh(-15.0, gl);
+    this.mesh = new Mesh(3.0, gl);
+    this.copy = new Mesh(-3.0, gl);
 
     // this.mesh = new Mesh(1.0, gl);
     // this.copy = new Mesh(-1.0, gl);
@@ -29,10 +29,10 @@ class Scene {
   }
 
   async init(gl) {
-    await this.mesh.loadMeshV4('bunny.obj');
+    await this.mesh.loadMeshV4('model.obj');
     this.mesh.init(gl, this.light, this.light2);
 
-    await this.copy.loadMeshV4('model.obj')
+    await this.copy.loadMeshV4('bunny5.obj')
     this.copy.init(gl, this.light, this.light2);
   }
 

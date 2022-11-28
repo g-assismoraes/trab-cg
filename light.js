@@ -29,7 +29,7 @@ export default class Light {
     gl.uniform1f(difKLoc, this.dif_k);
 
     const espCLoc = gl.getUniformLocation(program, "light_esp_c"+num);
-    gl.uniform4fv(espCLoc, this.pos);
+    gl.uniform4fv(espCLoc, this.esp_c);
     const espKLoc = gl.getUniformLocation(program, "light_esp_k"+num)
     gl.uniform1f(espKLoc, this.esp_k);
     const espPLoc = gl.getUniformLocation(program, "light_esp_p"+num)

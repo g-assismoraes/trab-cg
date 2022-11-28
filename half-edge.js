@@ -168,7 +168,7 @@ export class HalfEdgeDS {
   estrela(vId) {
     
     //pediu para voltar tudo a cor normal
-    if (vId < this.faces.length){
+    if (vId < this.vertices.length){
       if (vId == -1){
         if (this.pastVertexEstrela != null){
           let v = this.vertices[this.pastVertexEstrela];
