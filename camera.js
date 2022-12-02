@@ -52,7 +52,7 @@ export default class Camera {
     this.r_factor += 0.02
     // this.x = 35*Math.sin(this.t)
     // this.z = 25*Math.cos(this.t)
-    this.eye = vec3.fromValues(10*Math.sin(this.r_factor), 4, 10*Math.cos(this.r_factor));
+    this.eye = vec3.fromValues(10*Math.sin(this.r_factor), 4, 8*Math.cos(this.r_factor));
     // this.x = 8*Math.sin(this.r_factor)
     // this.z = 8*Math.cos(this.r_factor)
     //this.eye = vec3.fromValues(this.x, this.y, this.z);

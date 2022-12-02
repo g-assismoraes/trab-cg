@@ -37,6 +37,8 @@ class Scene {
   }
 
   draw(gl) {  
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
     this.cam.updateCam();
     this.light.updateLight();
     this.light2.updateLight();
@@ -49,6 +51,8 @@ class Scene {
 
     this.mesh.draw(gl, this.cam, this.light, this.light2);
     this.ball.draw(gl, this.cam, this.light, this.light2);
+
+    gl.disable(gl.DEPTH_TEST);
   }
 }
 
