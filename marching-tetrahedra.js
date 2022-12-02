@@ -10,7 +10,7 @@ function makeMesh(){
             x.push(aux);
             y.push(aux);
             z.push(aux);
-            aux=parseFloat((aux+0.020).toFixed(5)); //garante float
+            aux=parseFloat((aux+0.01).toFixed(5)); //garante float
         };
 
         let grao=x.length
