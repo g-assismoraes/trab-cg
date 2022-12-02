@@ -12,11 +12,11 @@ class Scene {
     this.light2 = new Light(-2.0, 2.0, -2.0);
 
     // Mesh
-    this.mesh = new Mesh(3.0, gl);
-    this.copy = new Mesh(-3.0, gl);
+    this.mesh = new Mesh(5.0, gl);
+    this.ball = new Mesh(-5.0, gl);
 
     // this.mesh = new Mesh(1.0, gl);
-    // this.copy = new Mesh(-1.0, gl);
+    // this.ball = new Mesh(-1.0, gl);
 
     Scene.vertexSelected = -2;
     Scene.meshSelected = 1;
@@ -29,11 +29,11 @@ class Scene {
   }
 
   async init(gl) {
-    await this.mesh.loadMeshV4('model.obj');
+    await this.mesh.loadMeshV4('esfera.obj');
     this.mesh.init(gl, this.light, this.light2);
 
-    await this.copy.loadMeshV4('bunny2.obj')
-    this.copy.init(gl, this.light, this.light2);
+    await this.ball.loadMeshV4('bunny2.obj')
+    this.ball.init(gl, this.light, this.light2);
   }
 
   draw(gl) {  
@@ -43,12 +43,12 @@ class Scene {
 
     if (Scene.vertexSelected != -2) {
       if (Scene.meshSelected == 1) this.mesh.callEstrela(Scene.vertexSelected);
-      else this.copy.callEstrela(Scene.vertexSelected);
+      else this.ball.callEstrela(Scene.vertexSelected);
       Scene.vertexSelected = -2;
     }
 
     this.mesh.draw(gl, this.cam, this.light, this.light2);
-    this.copy.draw(gl, this.cam, this.light, this.light2);
+    this.ball.draw(gl, this.cam, this.light, this.light2);
   }
 }
 
