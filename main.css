@@ -6,8 +6,9 @@ body {
     position: relative;
 }
 
-#overlay {
+#explain {
     position: absolute;
+    text-align: center;
     left: 10px;
     top: 10px;
     background-color: rgba(0, 198, 198, 0.742);

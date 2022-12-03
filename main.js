@@ -26,10 +26,10 @@ class Scene {
   }
 
   async init(gl) {
-    await this.mesh.loadMeshV4('esfera2.obj');
+    await this.mesh.loadMeshV4('esfera.obj');
     this.mesh.init(gl, this.light, this.light2);
 
-    await this.ball.loadMeshV4('bunny2.obj')
+    await this.ball.loadMeshV4('bunny.obj')
     this.ball.init(gl, this.light, this.light2);
   }
 

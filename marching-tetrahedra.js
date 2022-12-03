@@ -1,10 +1,7 @@
-function makeMesh(){
+function makeMesh(r, march){
         let x = [];
         let y = [];
         let z = [];
-
-        let r = 0.125;
-        let march = 0.01
         
         let aux= -1;
         while (aux <= 1){ //cria a nuvem de pontos inicial
@@ -57,7 +54,6 @@ function makeMesh(){
                     for (let tix = 0; tix < tetrahedras.length; tix++){
                         //teste dos casos dentro fora do tetraedro
                         let tetrahedra = tetrahedras[tix]
-                        console.log(tetrahedra)
                         let t = tetrahedra[0][3]+ tetrahedra[1][3]+ tetrahedra[2][3]+ tetrahedra[3][3]
                         if (t != 0 && t != 4 ){ //ignora os casos todos dentro e todos fora
                             if(t == 1 || t==3){ //caso ou somente 1 fora ou somente 1 dentro
@@ -415,10 +411,10 @@ function twoPointToVector(va,vb){
     return[vb[0]-va[0],vb[1]-va[1],vb[2]-va[2]]
 
 }
-function writeFile() {
+function writeFile(filename, r, march) {
     const fs = require('fs')
 
-    let mesh = makeMesh()
+    let mesh = makeMesh(r, march)
     let v = mesh[0]
     let t = mesh[1]
 
@@ -427,11 +423,10 @@ function writeFile() {
     for (let it = 0 ;it < t.length-1; it++){data+=`${t[it][0]} ${t[it][1]} ${t[it][2]}\n`}
     data+=`${t[t.length-1][0]} ${t[t.length-1][1]} ${t[t.length-1][2]}`
 
-    fs.writeFile('esfera2.obj', data, (err) => {
+    fs.writeFile(filename, data, (err) => {
         if (err) throw err;
     })
 
 }
 
-
-writeFile()
+writeFile('esfera4.obj', 0.125, 0.0125)
