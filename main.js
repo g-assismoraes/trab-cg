@@ -15,9 +15,6 @@ class Scene {
     this.mesh = new Mesh(5.0, gl);
     this.ball = new Mesh(-5.0, gl);
 
-    // this.mesh = new Mesh(1.0, gl);
-    // this.ball = new Mesh(-1.0, gl);
-
     Scene.vertexSelected = -2;
     Scene.meshSelected = 1;
     

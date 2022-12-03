@@ -4,7 +4,7 @@ function makeMesh(){
         let z = [];
 
         let r = 0.125;
-        let march = 0.05
+        let march = 0.01
         
         let aux= -1;
         while (aux <= 1){ //cria a nuvem de pontos inicial
@@ -427,7 +427,7 @@ function writeFile() {
     for (let it = 0 ;it < t.length-1; it++){data+=`${t[it][0]} ${t[it][1]} ${t[it][2]}\n`}
     data+=`${t[t.length-1][0]} ${t[t.length-1][1]} ${t[t.length-1][2]}`
 
-    fs.writeFile('esfera3.obj', data, (err) => {
+    fs.writeFile('esfera2.obj', data, (err) => {
         if (err) throw err;
     })
 
