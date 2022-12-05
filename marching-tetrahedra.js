@@ -429,4 +429,4 @@ function writeFile(filename, r, march) {
 
 }
 
-writeFile('esfera4.obj', 0.125, 0.0125)
+writeFile('esfera.obj', 0.125, 0.0125)

@@ -8,8 +8,8 @@ class Scene {
     this.cam = new Camera(gl);
 
     // Luz
-    this.light = new Light(2.0, 2.0, 2.0);
-    this.light2 = new Light(-2.0, 2.0, -2.0);
+    this.light = new Light(7.0, 5.0, 7.0);
+    this.light2 = new Light(-7.0, 5.0, -7.0);
 
     // Mesh
     this.mesh = new Mesh(5.0, gl);
